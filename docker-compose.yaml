@@ -1,0 +1,11 @@
+services:
+nest_api:
+build:
+context: .
+dockerfile: dockerfile
+ports:
+- "3000:3000"
+environment:
+- greg=emma
+volumes:
+- ./src:/app/src

@@ -1,0 +1,145 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type shippingPlace {
+  id: Int!
+  name: String!
+  address: String!
+  city: String!
+  postalCode: String!
+  country: String!
+  orders: Order!
+}
+
+type Order {
+  id: Int!
+  orderAt: DateTime!
+  status: String!
+  shippedAt: DateTime!
+  deliveredAt: DateTime!
+  user: User!
+  shippingPlace: shippingPlace!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  cart: Cart!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type orderItems {
+  id: String!
+  product_quntity: Float!
+  product_price: Float!
+  product: Product!
+}
+
+type Product {
+  id: Int!
+  name: String!
+  price: Float!
+  stock: Float!
+  description: String!
+  imageUrl: String!
+  cartItems: CartItem!
+  createdAt: Int!
+  updatedAt: Int!
+  orderItems: orderItems!
+}
+
+type Cart {
+  id: Int!
+  user: User!
+  orders: Order!
+}
+
+type CartItem {
+  id: Int!
+  cart: Cart!
+  product: Product!
+  quantity: Float!
+  price: Float!
+  createdAt: DateTime!
+}
+
+type User {
+  id: Int!
+  name: String!
+  email: String!
+  password: String!
+  role: String!
+  createdAt: DateTime
+  updatedAt: DateTime!
+  cart: Cart!
+  order: Order!
+}
+
+type Auth {
+  user: User!
+  token: String!
+}
+
+type Query {
+  auth(id: Int!): Auth!
+  user(id: Int!): User!
+  getCart: Cart!
+  products(search: String): [Product!]!
+  product(id: Float!): Product!
+}
+
+type Mutation {
+  signup(createAuthInput: CreateUserInput!): Auth!
+  login(email: String!, password: String!): Auth!
+  updateAuth(updateAuthInput: UpdateAuthInput!): Auth!
+  removeAuth(id: Int!): Auth!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser(id: Int!): User!
+  addToCart(productId: Float!, quantity: Float!): Cart!
+  removeFromCart(cartItemId: Float!): Boolean!
+  createProduct(createProductDto: CreateProductDto!, file: Upload): Product!
+  updateProduct(id: Float!, updateProductDto: UpdateProductInput!, file: Upload): Product!
+  deleteProduct(id: Float!): Boolean!
+}
+
+input CreateUserInput {
+  name: String!
+  email: String!
+  password: String!
+  confirmpassword: String!
+  role: String
+}
+
+input UpdateAuthInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input UpdateUserInput {
+  name: String
+  email: String
+  password: String
+  confirmpassword: String
+  role: String
+  id: Float!
+}
+
+input CreateProductDto {
+  name: String!
+  price: Int!
+  description: String!
+  imageUrl: String
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+input UpdateProductInput {
+  name: String
+  price: Int
+  description: String
+  imageUrl: String
+}
