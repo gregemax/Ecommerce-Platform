@@ -24,7 +24,7 @@ export class Guard extends AuthGuard('jwt') {
     return user;
   }
 }
-export class rolegurd extends Guard {
+export class rolegurd extends AuthGuard('jwt') {
   canActivate(
     context: ExecutionContext,
   ): boolean | Promise<boolean> | Observable<boolean> {

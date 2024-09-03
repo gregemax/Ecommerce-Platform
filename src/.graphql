@@ -83,7 +83,6 @@ type Auth {
 }
 
 type Query {
-  auth(id: Int!): Auth!
   user(id: Int!): User!
   getCart: Cart!
   products(search: String): [Product!]!
@@ -93,8 +92,6 @@ type Query {
 type Mutation {
   signup(createAuthInput: CreateUserInput!): Auth!
   login(email: String!, password: String!): Auth!
-  updateAuth(updateAuthInput: UpdateAuthInput!): Auth!
-  removeAuth(id: Int!): Auth!
   updateUser(updateUserInput: UpdateUserInput!): User!
   removeUser(id: Int!): User!
   addToCart(productId: Float!, quantity: Float!): Cart!
@@ -102,6 +99,7 @@ type Mutation {
   createProduct(createProductDto: CreateProductDto!, file: Upload): Product!
   updateProduct(id: Float!, updateProductDto: UpdateProductInput!, file: Upload): Product!
   deleteProduct(id: Float!): Boolean!
+  createOrder(createOrderInput: CreateOrderInput!): Order!
 }
 
 input CreateUserInput {
@@ -110,12 +108,6 @@ input CreateUserInput {
   password: String!
   confirmpassword: String!
   role: String
-}
-
-input UpdateAuthInput {
-  """Example field (placeholder)"""
-  exampleField: Int
-  id: Int!
 }
 
 input UpdateUserInput {
@@ -130,8 +122,8 @@ input UpdateUserInput {
 input CreateProductDto {
   name: String!
   price: Int!
+  stock: Int!
   description: String!
-  imageUrl: String
 }
 
 """The `Upload` scalar type represents a file upload."""
@@ -140,6 +132,19 @@ scalar Upload
 input UpdateProductInput {
   name: String
   price: Int
+  stock: Int
   description: String
-  imageUrl: String
+}
+
+input CreateOrderInput {
+  cartId: Int!
+  shippingplace: CreateshippingInput!
+}
+
+input CreateshippingInput {
+  name: String!
+  address: String!
+  city: String!
+  postalCode: String!
+  country: String!
 }

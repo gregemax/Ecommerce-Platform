@@ -21,9 +21,8 @@ import { OrderModule } from './order/order.module';
       context: ({ req }) => ({ req }),
       playground: false,
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
-
+      csrfPrevention: false,
       introspection: true,
-
     }),
     AuthModule,
     UserModule,

@@ -42,7 +42,7 @@ export class OrderService {
     order.user = user
     
     
-    return 'This action adds a new order';
+    return await this.orderrepo.save(order);
   }
 
   findAll() {

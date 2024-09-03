@@ -10,15 +10,17 @@ export class CartResolver {
 
   @Query(returns => Cart)
   @UseGuards(Guard)
-  async getCart(@Context() context): Promise<Cart> {
+  async getCart(@Context("req") context): Promise<Cart> {
     const userId = context.req.user.id;
     return this.cartService.getCart(userId);
   }
 
   @Mutation(returns => Cart)
   @UseGuards(Guard)
-  async addToCart(@Context() context, @Args('productId') productId: number, @Args('quantity') quantity: number): Promise<Cart> {
-    const userId = context.req.user.id;
+  async addToCart(@Context("req") context, @Args('productId') productId: number, @Args('quantity') quantity: number): Promise<Cart> {
+    const userId = context.user.user.id;
+    console.log(userId,"greg");
+    
     return this.cartService.addToCart(userId, productId, quantity);
   }
 

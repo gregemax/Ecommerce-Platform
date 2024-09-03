@@ -1,4 +1,4 @@
-import { InputType, Int, Field } from '@nestjs/graphql';
+import { InputType, Field, Int } from '@nestjs/graphql';
 import { Type } from 'class-transformer';
 import {
   IsNotEmpty,
@@ -7,22 +7,6 @@ import {
   ValidateNested,
 } from 'class-validator';
 
-@InputType()
-export class CreateOrderInput {
-  @Field()
-  @IsNumber()
-    cartId: number;
-    
-  @Field(()=>CreateshippingInput)
-  @Type(() => CreateshippingInput)
-  @ValidateNested()
-  shippingplace: CreateshippingInput;
-}
-
-@InputType()
-export class CreateOrderItemInput {
-
- }
 @InputType()
 export class CreateshippingInput {
   @Field()
@@ -50,3 +34,18 @@ export class CreateshippingInput {
   @IsNotEmpty()
   country: string;
 }
+
+@InputType()
+export class CreateOrderInput {
+  @Field(()=>Int)
+  @IsNumber()
+  cartId: number;
+
+  @Field(() => CreateshippingInput)
+  @Type(() => CreateshippingInput)
+  @ValidateNested()
+  shippingplace: CreateshippingInput;
+}
+
+@InputType()
+export class CreateOrderItemInput {}

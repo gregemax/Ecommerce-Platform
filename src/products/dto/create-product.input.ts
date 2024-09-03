@@ -9,19 +9,19 @@ export class CreateProductDto {
   @Field()
   name: string;
 
-  @Field(()=>Int)
+  @Field(() => Int)
   @IsNumber()
   @IsDecimal()
   @IsNotEmpty()
   price: number;
 
+  @Field(() => Int)
+  @IsNumber()
+  @IsNotEmpty()
+  stock: number;
+
   @Field()
   @IsString()
   @IsNotEmpty()
   description: string;
-
-  @IsString()
-  @IsNotEmpty()
-  @Field({ nullable: true })
-  imageUrl?: string;
 }

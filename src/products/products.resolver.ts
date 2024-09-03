@@ -21,12 +21,13 @@ export class ProductsResolver {
     return this.productService.findOne(id);
   }
 
-  @Mutation((returns) => Product)
+  @Mutation(() => Product)
   async createProduct(
     @Args('createProductDto') createProductDto: CreateProductDto,
-    @Args({ name: 'file', type: () => GraphQLUpload, nullable: true })
+    @Args('file', { type: () => GraphQLUpload, nullable: true })
     file: FileUpload,
   ): Promise<Product> {
+    
     return this.productService.create(createProductDto, file);
   }
 

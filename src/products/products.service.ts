@@ -35,15 +35,22 @@ export class ProductsService {
 
   async create(
     createProductDto: CreateProductDto,
-    file: Express.Multer.File,
+    file: Express.Multer.File, 
   ): Promise<Product> {
-    console.log(file);
+    if (!file) {
+      throw new Error('File is required');
+    }
+
     
     const uploadResult = await this.cloudinaryService.uploadImage(file);
+console.log(uploadResult);
+  
     const product = this.productRepository.create({
       ...createProductDto,
-      imageUrl: uploadResult.secure_url,
+      imageUrl: uploadResult.secure_url, 
     });
+
+   
     return this.productRepository.save(product);
   }
 
@@ -55,9 +62,8 @@ export class ProductsService {
     const product = await this.findOne(id);
 
     if (file) {
-   
       if (product.imageUrl) {
-        const publicId = product.imageUrl.split('/').pop().split('.')[0]; // Extract public ID from URL
+        const publicId = product.imageUrl.split('/').pop().split('.')[0]; 
         await this.cloudinaryService.deleteImage(publicId);
       }
       const uploadResult = await this.cloudinaryService.uploadImage(file);

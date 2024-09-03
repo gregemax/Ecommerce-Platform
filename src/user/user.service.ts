@@ -35,7 +35,7 @@ try {
   }
   async findbyemail(email:string) {
     try {
-      const user = await this.userrepo.findOne({ where: { email} });
+      const user = await this.userrepo.findOne({ where: { email},relations:{order:true,cart:true} });
       if (!user) {
         throw new BadRequestException(`User with ID ${email} not found`);
       }

@@ -29,24 +29,28 @@ export class CartService {
   ): Promise<Cart> {
     let cart = await this.cartRepository.findOne({
       where: { user: { id: userId } },
-      relations: ['items', 'items.product'],
+      relations: { user: true, orders: true, items: true },
     });
     if (!cart) {
       cart = this.cartRepository.create({ user: { id: userId }, items: [] });
     }
-    const product = await this.productRepository.findOne({where:{id:productId}});
+    const product = await this.productRepository.findOne({
+      where: { id: productId },
+    });
     if (!product) throw new Error('Product not found');
 
-    const cartItem = this.cartItemRepository.create({
-      cart,
-      product,
+    const cartItem = await this.cartItemRepository.create({
       quantity,
       price: product.price,
     });
-    cart.items.push(cartItem);
-    cart.totalPrice += product.price * quantity;
+    cartItem.cart = cart;
+    cartItem.product = product;
 
+    cart.totalPrice += product.price * quantity;
+    await this.cartItemRepository.save(cartItem);
+    cart.items.push(cartItem);
     await this.cartRepository.save(cart);
+
     return cart;
   }
 

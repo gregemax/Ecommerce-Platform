@@ -28,3 +28,4 @@ export class InventoryGateway {
     this.server.emit('stockUpdated', { productId, newStock });
   }
 }
+// 
