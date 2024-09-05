@@ -24,7 +24,41 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+E-Commerce Platform
+This is a full-featured e-commerce platform built using NestJS, TypeORM, PostgreSQL, GraphQL, WebSocket, and React. It provides a complete shopping experience with product management, cart, checkout, and payment gateway integration.
+
+## Features
+User Authentication and Authorization: Users can register, log in, and access restricted areas based on roles.
+Product Listing and Search: Products can be listed, searched, and filtered by categories.
+Shopping Cart: Users can add products to the cart, view the cart, and proceed to checkout.
+Order Management: Allows users to place orders and administrators to manage them.
+Payment Gateway Integration: Stripe (or another service) is used to handle payments securely.
+Admin Dashboard: Administrators can manage products, users, and orders.
+Real-time Inventory Updates: Using WebSocket, inventory is updated in real time as products are purchased or modified.
+File Upload (Images): Products can have images uploaded using GraphQL file uploads.
+
+## Tech Stack
+
+
+NestJS
+TypeORM (with PostgreSQL)
+GraphQL
+WebSocket
+Stripe API
+Cloudinary for image storage
+
+
+
+
+## Database:
+
+PostgreSQL
+
+## Containerization:
+
+Docker with Docker Compose (for MySQL/ PostgreSQL)
+
+
 
 ## Installation
 

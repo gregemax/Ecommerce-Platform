@@ -1,6 +1,7 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
 import { Cart } from 'src/cart/entities/cart.entity';
 import { Order } from 'src/order/entities/order.entity';
+import { Payment } from 'src/payment/entities/payment.entity';
 import {
   Column,
   Entity,
@@ -49,4 +50,8 @@ export class User {
   @Field(() => Order)
   @OneToMany(() => Order, (order) => order.user)
   order: [Order];
+
+  
+  @OneToMany(() => Payment, (payment) => payment.user)
+  payment: Payment[];
 }

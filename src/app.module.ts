@@ -12,6 +12,7 @@ import { CloudinaryModule } from './cloudinary/cloudinary.module';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 import { InventoryModule } from './inventory/inventory.module';
 import { OrderModule } from './order/order.module';
+import { PaymentModule } from './payment/payment.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot(dataSourceOptions),
@@ -31,6 +32,7 @@ import { OrderModule } from './order/order.module';
     CloudinaryModule,
     InventoryModule,
     OrderModule,
+    PaymentModule,
   ],
 })
 export class AppModule {}
