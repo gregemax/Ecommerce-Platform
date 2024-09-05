@@ -35,7 +35,7 @@ export class User {
   role: string;
 
   @Field(() => Date, { nullable: true })
-  @Column({ type: 'datetime', nullable: true })
+  @Column({ type: 'date', nullable: true })
   createdAt: Date;
 
   @Field()

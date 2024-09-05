@@ -25,7 +25,7 @@ export class InventoryService {
     const updatedProduct = await this.productRepository.save(product);
 
 
-    //this.inventoryGateway.broadcastStockChange(product.id, product.stock);
+    this.inventoryGateway.broadcastStockChange(product.id, product.stock);
 
     return updatedProduct;
   }
@@ -41,7 +41,7 @@ export class InventoryService {
     product.stock += quantity;
     const updatedProduct = await this.productRepository.save(product);
 
-   // this.inventoryGateway.broadcastStockChange(product.id, product.stock);
+    this.inventoryGateway.broadcastStockChange(product.id, product.stock);
 
     return updatedProduct;
   }

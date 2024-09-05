@@ -14,7 +14,7 @@ export class CloudinaryService {
   async uploadImage(
     file: FileUpload,
   ): Promise<UploadApiResponse | UploadApiErrorResponse> {
-    console.log(file);
+
     return new Promise((resolve, reject) => {
       const upload = v2.uploader.upload_stream(
         { folder: 'images' },
