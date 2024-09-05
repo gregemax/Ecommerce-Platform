@@ -12,6 +12,23 @@ type shippingPlace {
   orders: Order!
 }
 
+type Payment {
+  id: Int!
+  amount: Int!
+  method: String!
+  status: String!
+  transactionId: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  user: User!
+  order: Order!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type Order {
   id: Int!
   orderAt: DateTime!
@@ -24,11 +41,6 @@ type Order {
   updatedAt: DateTime!
   cart: Cart!
 }
-
-"""
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
-"""
-scalar DateTime
 
 type orderItems {
   id: String!
@@ -100,6 +112,8 @@ type Mutation {
   updateProduct(id: Float!, updateProductDto: UpdateProductInput!, file: Upload): Product!
   deleteProduct(id: Float!): Boolean!
   createOrder(createOrderInput: CreateOrderInput!): Order!
+  payment(createPaymentInput: CreatePaymentInput!): Payment!
+  updatePayment(updatePaymentId: Float!, updatePaymentstatus: String!): Payment!
 }
 
 input CreateUserInput {
@@ -147,4 +161,17 @@ input CreateshippingInput {
   city: String!
   postalCode: String!
   country: String!
+}
+
+input CreatePaymentInput {
+  orderId: Int!
+  amount: Int!
+  creditCardDetails: CreditCardDetails!
+}
+
+input CreditCardDetails {
+  number: String!
+  expiry: String!
+  cvv: String!
+  name: String!
 }

@@ -17,6 +17,7 @@ import { User } from 'src/user/entities/user.entity';
 import { shippingPlace } from './shipping.entity';
 import { orderItems } from './orderItem.entity';
 import { Cart } from 'src/cart/entities/cart.entity';
+import { Payment } from 'src/payment/entities/payment.entity';
 
 @ObjectType()
 @Entity('order')
@@ -65,4 +66,6 @@ export class Order {
   @Field(() => Cart)
   @ManyToOne(() => Cart, (cart) => cart.orders)
   cart: Cart;
+  @OneToOne(() => Payment, (Payment) => Payment.order) // One-to-one relation with Order
+  payment: Payment;
 }
