@@ -28,6 +28,7 @@ E-Commerce Platform
 This is a full-featured e-commerce platform built using NestJS, TypeORM, PostgreSQL, GraphQL, WebSocket, and React. It provides a complete shopping experience with product management, cart, checkout, and payment gateway integration.
 
 ## Features
+
 User Authentication and Authorization: Users can register, log in, and access restricted areas based on roles.
 Product Listing and Search: Products can be listed, searched, and filtered by categories.
 Shopping Cart: Users can add products to the cart, view the cart, and proceed to checkout.
@@ -39,7 +40,6 @@ File Upload (Images): Products can have images uploaded using GraphQL file uploa
 
 ## Tech Stack
 
-
 NestJS
 TypeORM (with PostgreSQL)
 GraphQL
@@ -47,29 +47,20 @@ WebSocket
 Stripe API
 Cloudinary for image storage
 
-
-
-
 ## Database:
 
 PostgreSQL
 
-
-
 ## project testing
-https://res.cloudinary.com/dmkicbywv/image/upload/v1725534269/images/namkxwrywjoxmbsfk7kj.png
 
-https://res.cloudinary.com/dmkicbywv/image/upload/v1725534470/images/z31aoqdgdhmb3lpykn54.png
-
-https://res.cloudinary.com/dmkicbywv/image/upload/v1725534533/images/z7bbgxerdvebxtnhvbak.png
-
-https://res.cloudinary.com/dmkicbywv/image/upload/v1725534731/images/e9a42waj04asgycwv3gb.png
+<img src="https://res.cloudinary.com/dmkicbywv/image/upload/v1725534269/images/namkxwrywjoxmbsfk7kj.png" alt="NPM Version" />
+<img src="https://res.cloudinary.com/dmkicbywv/image/upload/v1725534470/images/z31aoqdgdhmb3lpykn54.png" alt="NPM Version" />
+<img src="https://res.cloudinary.com/dmkicbywv/image/upload/v1725534533/images/z7bbgxerdvebxtnhvbak.png" alt="NPM Version" />
+<img src="https://res.cloudinary.com/dmkicbywv/image/upload/v1725534731/images/e9a42waj04asgycwv3gb.png" alt="NPM Version" />
 
 ## Containerization:
 
 Docker with Docker Compose (for MySQL/ PostgreSQL)
-
-
 
 ## Installation
 
